@@ -3,5 +3,5 @@
 	<name>Don't Tempt Me!</name>
 	<author>KeenKrozzy</author>
 	<targetVersion>0.17.1557</targetVersion>
-	<description>This Mod removes the developer mode option.</description>
+	<description>This Mod removes the developer mode option. v1.2: Don't Tempt Me! save games can only be loaded with when this mod is active. Also, when this mod is active only games saved with Don't Tempt Me! active can be loaded.</description>
 </ModMetaData>
