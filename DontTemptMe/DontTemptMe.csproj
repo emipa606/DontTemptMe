@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>Resources\RimWorld\Mods\Youtube Mod\assemblies\</OutputPath>
+    <OutputPath>..\Resources\RimWorld\Mods\Don%27t Tempt Me! v2.0.1\assemblies\</OutputPath>
     <DefineConstants>
     </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -26,7 +26,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>Resources\RimWorld\Mods\Youtube Mod\assemblies\</OutputPath>
+    <OutputPath>..\Resources\RimWorld\Mods\Don%27t Tempt Me! v2.0.1\assemblies\</OutputPath>
     <DefineConstants>
     </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -35,11 +35,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>C:\Users\ken\AppData\Local\Temporary Projects\DontTemptMe\Resources\0Harmony.dll</HintPath>
+      <HintPath>..\Resources\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="0Reloader">
+      <HintPath>..\Resources\0Reloader.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>C:\Users\ken\AppData\Local\Temporary Projects\DontTemptMe\Resources\RimWorld\RimWorldWin_Data\Managed\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\Resources\RimWorld\RimWorldWin_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,18 +50,17 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>C:\Users\ken\AppData\Local\Temporary Projects\DontTemptMe\Resources\RimWorld\RimWorldWin_Data\Managed\UnityEngine.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\Resources\RimWorld\RimWorldWin_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DTMPatching.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\0Harmony.dll" />
-    <Content Include="Resources\RimWorld\RimWorldWin_Data\Managed\Assembly-CSharp.dll" />
-    <Content Include="Resources\RimWorld\RimWorldWin_Data\Managed\UnityEngine.dll" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties BuildVersion_StartDate="2000/1/1" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
