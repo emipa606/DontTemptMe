@@ -13,8 +13,8 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\Resources\RimWorld\Mods\Don%27t Tempt Me! v2.0.1\assemblies\</OutputPath>
     <DefineConstants>
@@ -42,6 +42,7 @@
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\Resources\RimWorld\RimWorldWin_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,6 +52,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
       <HintPath>..\Resources\RimWorld\RimWorldWin_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -60,7 +62,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_StartDate="2000/1/1" />
+      <UserProperties BuildVersion_DetectChanges="False" BuildVersion_UseGlobalSettings="False" BuildVersion_AssemblyInfoFilename="Properties\AssemblyInfo.cs" BuildVersion_IncrementBeforeBuild="False" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_BuildVersioningStyle="None.None.Increment.None" BuildVersion_StartDate="2000/1/1" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
