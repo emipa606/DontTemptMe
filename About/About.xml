@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Don't Tempt Me! (Continued)</name>
+  <packageId>Mlie.DontTemptMe</packageId>
+  <author>KeenKrozzy</author>
+  <url>https://github.com/emipa606/DontTemptMe</url>
+  <supportedVersions>
+    <li>1.3</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+  </loadAfter>
+  <description>[img]https://i.imgur.com/buuPQel.png[/img]
+Update of KeenKrozzys mod
+https://steamcommunity.com/sharedfiles/filedetails/?id=1186514547
+
+[img]https://i.imgur.com/pufA0kM.png[/img]
+
+[table]
+    [tr]
+        [td][url=https://invite.gg/Mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
+        [td][url=https://github.com/emipa606/DontTemptMe][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
+    [/tr]
+    [tr]
+        [td][img]https://i.imgur.com/XLUGyo4.png[/img][/td]
+        [td][img]https://i.imgur.com/6KqTKks.png[/img][/td]
+    [/tr]
+[/table]
+	
+[img]https://i.imgur.com/Z4GOv8H.png[/img]
+[h1]Features[/h1]
+[list]
+[*] Removes the developer mode option from the options menu.
+[*] Removes the change AI option from the options menu.
+[*] Games started with Don't Tempt Me! [b]enabled[/b] can only be loaded with Don't Tempt Me! [b]enabled[/b].
+[*] Games started [b]without[/b] Don't Tempt Me! enabled [b]cannot[/b] be loaded with Don't Tempt Me! enabled.
+[/list]
+
+The debug log is still accessible through the mod options.
+
+[h1]WARNING[/h1]
+WARNING: If your game becomes bugged while using this mod for what ever reason, you will NOT be able to fix it with developer mode. Do Not use any mod that is known to cause game-breaking bugs!
+
+Check out my reddit page. [url=https://www.reddit.com/r/KeenKrozzy/]KeenKrozzy is programming stuff[/url]
+Feel free to post any questions or discussions there. It's preferable to using steam comments.
+[img]https://i.imgur.com/PwoNOj4.png[/img]
+[list]
+[*] See if the the error persists if you just have this mod and its requirements active.
+[*] If not, try adding your other mods until it happens again.
+[*] Post your error-log using [url=https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib[/url] and command Ctrl+F12
+[*] For best support, please use the Discord-channel for error-reporting.
+[*] Do not report errors by making a discussion-thread, I get no notification of that.
+[*] If you have the solution for a problem, please post it to the GitHub repository.
+[/list]</description>
+</ModMetaData>

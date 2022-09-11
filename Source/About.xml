@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Don't Tempt Me!</name>
+  <author>KeenKrozzy</author>
+  <targetVersion>0.18.0</targetVersion>
+  <url>https://www.reddit.com/r/KeenKrozzy/</url>
+  <description>This Mod removes the developer mode option and the option to change AI. The debug log is still accessible through the mod options.</description>
+</ModMetaData>
