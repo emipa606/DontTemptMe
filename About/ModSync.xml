@@ -2,7 +2,7 @@
 <ModSyncNinjaData>
   <ID>43c2b171-ece7-48da-9348-e9ad43163c6b</ID>
   <ModName>Don't Tempt Me! (Continued)</ModName>
-  <Version>1.3.1</Version>
+  <Version>1.4.1</Version>
   <SaveBreaking>False</SaveBreaking>
   <Host name="Github">
     <Owner>emipa606</Owner>
@@ -12,8 +12,3 @@
     <Branch>master</Branch>
   </Host>
 </ModSyncNinjaData>
-
-
-
-
-

@@ -28,7 +28,7 @@ The debug log is still accessible through the mod options.
 WARNING: If your game becomes bugged while using this mod for what ever reason, you will NOT be able to fix it with developer mode. Do Not use any mod that is known to cause game-breaking bugs!
 
 Check out my reddit page. https://www.reddit.com/r/KeenKrozzy/]KeenKrozzy is programming stuff
-Feel free to post any questions or discussions there. It's preferable to using steam comments.
+[strike]Feel free to post any questions or discussions there. It's preferable to using steam comments.[/strike]
 ![Image](https://i.imgur.com/PwoNOj4.png)
 
 

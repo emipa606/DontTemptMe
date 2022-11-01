@@ -46,9 +46,9 @@ public class DTMMod : Mod
         var rect2 = new Rect(rect.x, position2.y + position2.height + floVertSpacer, inRect.width * 0.25f,
             inRect.height * 0.05f);
         GUI.DrawTexture(rect, DTMBin.DTMBanner);
-        if (GUI.Button(position, "Debug Log Menu") && !Find.WindowStack.TryRemove(typeof(Dialog_DebugOutputMenu)))
+        if (GUI.Button(position, "Debug Log Menu") && !Find.WindowStack.TryRemove(typeof(Dialog_Debug)))
         {
-            Find.WindowStack.Add(new Dialog_DebugOutputMenu());
+            Find.WindowStack.Add(new Dialog_Debug());
         }
 
         if (GUI.Button(position2, "Debug Log Window") && !Find.WindowStack.TryRemove(typeof(EditWindow_Log)))
