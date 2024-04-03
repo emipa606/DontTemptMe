@@ -5,7 +5,7 @@ using Verse;
 
 namespace DontTemptMe;
 
-[HarmonyPatch(typeof(SavedGameLoaderNow), "LoadGameFromSaveFileNow")]
+[HarmonyPatch(typeof(SavedGameLoaderNow), nameof(SavedGameLoaderNow.LoadGameFromSaveFileNow))]
 public static class SavedGameLoaderNow_LoadGameFromSaveFileNow
 {
     public static bool Prefix(string fileName)

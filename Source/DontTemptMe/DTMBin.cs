@@ -6,9 +6,9 @@ namespace DontTemptMe;
 [StaticConstructorOnStartup]
 public static class DTMBin
 {
-    public static Texture2D DTMBanner;
+    public static readonly Texture2D DTMBanner;
 
-    public static Texture2D RedditIcon;
+    public static readonly Texture2D RedditIcon;
 
     static DTMBin()
     {

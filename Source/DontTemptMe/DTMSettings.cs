@@ -2,6 +2,4 @@ using Verse;
 
 namespace DontTemptMe;
 
-public class DTMSettings : ModSettings
-{
-}
+public class DTMSettings : ModSettings;

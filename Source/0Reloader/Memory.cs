@@ -11,9 +11,9 @@ public static class Memory
     {
         if (IntPtr.Size == 8)
         {
-            memory = WriteBytes(memory, new byte[] { 72, 184 });
+            memory = WriteBytes(memory, [72, 184]);
             memory = WriteLong(memory, destination);
-            memory = WriteBytes(memory, new byte[] { 255, 224 });
+            memory = WriteBytes(memory, [255, 224]);
         }
         else
         {
@@ -36,7 +36,7 @@ public static class Memory
         var method2 = typeof(DynamicMethod).GetMethod("GetMethodDescriptor", bindingAttr);
         if ((object)method2 != null)
         {
-            return (RuntimeMethodHandle)method2.Invoke(method, Array.Empty<object>());
+            return (RuntimeMethodHandle)method2.Invoke(method, []);
         }
 
         var field = typeof(DynamicMethod).GetField("m_method", bindingAttr);

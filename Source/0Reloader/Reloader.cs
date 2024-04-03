@@ -20,8 +20,7 @@ internal class Reloader : Mod
     private readonly ModContentPack content;
     private readonly Dictionary<string, MethodInfo> reloadableMethods = new Dictionary<string, MethodInfo>();
 
-    public Reloader(ModContentPack content)
-        : base(content)
+    public Reloader(ModContentPack content) : base(content)
     {
         this.content = content;
         LongEventHandler.QueueLongEvent(CacheExstingMethods, "CacheExstingMethods", false, null);
@@ -33,6 +32,11 @@ internal class Reloader : Mod
         fileSystemWatcher.NotifyFilter = NotifyFilters.CreationTime | NotifyFilters.DirectoryName |
                                          NotifyFilters.FileName | NotifyFilters.LastWrite;
 
+        fileSystemWatcher.Created += Value;
+        fileSystemWatcher.Changed += Value;
+        fileSystemWatcher.EnableRaisingEvents = true;
+        return;
+
         void Value(object sender, FileSystemEventArgs args)
         {
             var fullPath = args.FullPath;
@@ -41,10 +45,6 @@ internal class Reloader : Mod
                 LoadPath(fullPath);
             }
         }
-
-        fileSystemWatcher.Created += Value;
-        fileSystemWatcher.Changed += Value;
-        fileSystemWatcher.EnableRaisingEvents = true;
     }
 
     private void CacheExstingMethods()
