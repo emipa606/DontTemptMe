@@ -10,20 +10,19 @@ namespace Reloader;
 
 internal class Reloader : Mod
 {
-    public static readonly BindingFlags allBindings =
-        BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public |
-        BindingFlags.NonPublic | BindingFlags.GetField | BindingFlags.SetField |
-        BindingFlags.GetProperty | BindingFlags.SetProperty;
+    private const BindingFlags allBindings = BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public |
+                                             BindingFlags.NonPublic | BindingFlags.GetField | BindingFlags.SetField |
+                                             BindingFlags.GetProperty | BindingFlags.SetProperty;
 
     private readonly string assemblyPath;
 
     private readonly ModContentPack content;
-    private readonly Dictionary<string, MethodInfo> reloadableMethods = new Dictionary<string, MethodInfo>();
+    private readonly Dictionary<string, MethodInfo> reloadableMethods = new();
 
     public Reloader(ModContentPack content) : base(content)
     {
         this.content = content;
-        LongEventHandler.QueueLongEvent(CacheExstingMethods, "CacheExstingMethods", false, null);
+        LongEventHandler.QueueLongEvent(cacheExistingMethods, "CacheExstingMethods", false, null);
         var path = Path.Combine(content.RootDir, VersionControl.CurrentVersionStringWithoutBuild);
         assemblyPath = Path.Combine(path, "Assemblies");
         var fileSystemWatcher = new FileSystemWatcher();
@@ -32,38 +31,38 @@ internal class Reloader : Mod
         fileSystemWatcher.NotifyFilter = NotifyFilters.CreationTime | NotifyFilters.DirectoryName |
                                          NotifyFilters.FileName | NotifyFilters.LastWrite;
 
-        fileSystemWatcher.Created += Value;
-        fileSystemWatcher.Changed += Value;
+        fileSystemWatcher.Created += value;
+        fileSystemWatcher.Changed += value;
         fileSystemWatcher.EnableRaisingEvents = true;
         return;
 
-        void Value(object sender, FileSystemEventArgs args)
+        void value(object sender, FileSystemEventArgs args)
         {
             var fullPath = args.FullPath;
-            if (!ExcludedDLLs(fullPath))
+            if (!excludedDLLs(fullPath))
             {
-                LoadPath(fullPath);
+                loadPath(fullPath);
             }
         }
     }
 
-    private void CacheExstingMethods()
+    private void cacheExistingMethods()
     {
         AppDomain.CurrentDomain.GetAssemblies().Where(delegate(Assembly assembly)
             {
                 var fullName = assembly.FullName;
                 fullName = fullName.Split(',')[0];
                 var path = Path.Combine(assemblyPath, $"{fullName}.dll");
-                return File.Exists(path) && !ExcludedDLLs(path);
+                return File.Exists(path) && !excludedDLLs(path);
             }).ToList()
             .ForEach(delegate(Assembly assembly)
             {
-                Log.Warning($"Reloader: analyzing {assembly.FullName}");
+                Log.Message($"Reloader: analyzing {assembly.FullName}");
                 assembly.GetTypes().ToList().ForEach(delegate(Type type)
                 {
                     type.GetMethods(allBindings).ToList().ForEach(delegate(MethodInfo method)
                     {
-                        if (!method.TryGetAttribute<ReloadMethod>(out var _))
+                        if (!method.TryGetAttribute<ReloadMethod>(out _))
                         {
                             return;
                         }
@@ -71,26 +70,26 @@ internal class Reloader : Mod
                         var text = $"{method.DeclaringType?.FullName}.{method.Name}";
                         reloadableMethods[text] = method;
                         _ = method.DeclaringType;
-                        Log.Warning($"Reloader: found reloadable method {text}");
+                        Log.Message($"Reloader: found reloadable method {text}");
                     });
                 });
             });
     }
 
-    private void LoadPath(string path)
+    private void loadPath(string path)
     {
         Assembly.Load(File.ReadAllBytes(path)).GetTypes().ToList()
             .ForEach(delegate(Type type)
             {
                 type.GetMethods(allBindings).ToList().ForEach(delegate(MethodInfo newMethod)
                 {
-                    if (!newMethod.TryGetAttribute<ReloadMethod>(out var _))
+                    if (!newMethod.TryGetAttribute<ReloadMethod>(out _))
                     {
                         return;
                     }
 
                     var text = $"{newMethod.DeclaringType?.FullName}.{newMethod.Name}";
-                    Log.Warning($"Reloader: patching {text}");
+                    Log.Message($"Reloader: patching {text}");
                     var methodInfo = reloadableMethods[text];
                     if ((object)methodInfo != null)
                     {
@@ -106,7 +105,7 @@ internal class Reloader : Mod
             });
     }
 
-    private bool ExcludedDLLs(string path)
+    private static bool excludedDLLs(string path)
     {
         return path.EndsWith("0Reloader.dll");
     }

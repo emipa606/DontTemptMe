@@ -11,28 +11,28 @@ public static class Memory
     {
         if (IntPtr.Size == 8)
         {
-            memory = WriteBytes(memory, [72, 184]);
-            memory = WriteLong(memory, destination);
-            memory = WriteBytes(memory, [255, 224]);
+            memory = writeBytes(memory, [72, 184]);
+            memory = writeLong(memory, destination);
+            memory = writeBytes(memory, [255, 224]);
         }
         else
         {
-            memory = WriteByte(memory, 104);
-            memory = WriteInt(memory, (int)destination);
-            memory = WriteByte(memory, 195);
+            memory = writeByte(memory, 104);
+            memory = writeInt(memory, (int)destination);
+            memory = writeByte(memory, 195);
         }
 
         return memory;
     }
 
-    private static RuntimeMethodHandle GetRuntimeMethodHandle(MethodBase method)
+    private static RuntimeMethodHandle getRuntimeMethodHandle(MethodBase method)
     {
         if (method is not DynamicMethod)
         {
             return method.MethodHandle;
         }
 
-        var bindingAttr = BindingFlags.Instance | BindingFlags.NonPublic;
+        const BindingFlags bindingAttr = BindingFlags.Instance | BindingFlags.NonPublic;
         var method2 = typeof(DynamicMethod).GetMethod("GetMethodDescriptor", bindingAttr);
         if ((object)method2 != null)
         {
@@ -50,36 +50,36 @@ public static class Memory
 
     public static long GetMethodStart(MethodBase method)
     {
-        var runtimeMethodHandle = GetRuntimeMethodHandle(method);
+        var runtimeMethodHandle = getRuntimeMethodHandle(method);
         RuntimeHelpers.PrepareMethod(runtimeMethodHandle);
         return runtimeMethodHandle.GetFunctionPointer().ToInt64();
     }
 
-    public static unsafe long WriteByte(long memory, byte value)
+    private static unsafe long writeByte(long memory, byte value)
     {
         var ptr = (byte*)memory;
         *ptr = value;
         return memory + 1;
     }
 
-    public static long WriteBytes(long memory, byte[] values)
+    private static long writeBytes(long memory, byte[] values)
     {
         foreach (var value in values)
         {
-            memory = WriteByte(memory, value);
+            memory = writeByte(memory, value);
         }
 
         return memory;
     }
 
-    public static unsafe long WriteInt(long memory, int value)
+    private static unsafe long writeInt(long memory, int value)
     {
         var ptr = (int*)memory;
         *ptr = value;
         return memory + 4;
     }
 
-    public static unsafe long WriteLong(long memory, long value)
+    private static unsafe long writeLong(long memory, long value)
     {
         var ptr = (long*)memory;
         *ptr = value;

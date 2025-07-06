@@ -7,10 +7,10 @@ namespace DontTemptMe;
 
 public class DTMMod : Mod
 {
-    private readonly Vector2 vecDTMBanner = new Vector2(739f, 110f);
+    private readonly Vector2 vecDtmBanner = new Vector2(739f, 110f);
     private float floVertSpacer;
 
-    private Vector2 vecDTMBannerSize = Vector2.zero;
+    private Vector2 vecDtmBannerSize = Vector2.zero;
 
     public DTMMod(ModContentPack content)
         : base(content)
@@ -29,15 +29,15 @@ public class DTMMod : Mod
         //IL_01d0: Expected O, but got Unknown
         floVertSpacer = inRect.height * 0.025f;
         Rect rect;
-        if (inRect.width > vecDTMBanner.x)
+        if (inRect.width > vecDtmBanner.x)
         {
-            rect = new Rect(0f, 40f, vecDTMBanner.x, vecDTMBanner.y);
+            rect = new Rect(0f, 40f, vecDtmBanner.x, vecDtmBanner.y);
         }
         else
         {
-            vecDTMBannerSize.x = inRect.width;
-            vecDTMBannerSize.y = vecDTMBannerSize.x / vecDTMBanner.x * vecDTMBanner.y;
-            rect = new Rect(0f, 40f, vecDTMBannerSize.x, vecDTMBannerSize.y);
+            vecDtmBannerSize.x = inRect.width;
+            vecDtmBannerSize.y = vecDtmBannerSize.x / vecDtmBanner.x * vecDtmBanner.y;
+            rect = new Rect(0f, 40f, vecDtmBannerSize.x, vecDtmBannerSize.y);
         }
 
         var position = new Rect(rect.x, rect.y + rect.height + floVertSpacer, inRect.width * 0.25f,
