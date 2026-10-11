@@ -24,6 +24,13 @@ internal class Reloader : Mod
         this.content = content;
         LongEventHandler.QueueLongEvent(cacheExistingMethods, "CacheExstingMethods", false, null);
         var path = Path.Combine(content.RootDir, VersionControl.CurrentVersionStringWithoutBuild);
+        var i = 0;
+        while (!Directory.Exists(path) && i < VersionControl.CurrentMinor)
+        {
+            i++;
+            path = Path.Combine(content.RootDir, $"{VersionControl.CurrentMajor}.{VersionControl.CurrentMinor - i}");
+        }
+
         assemblyPath = Path.Combine(path, "Assemblies");
         var fileSystemWatcher = new FileSystemWatcher();
         fileSystemWatcher.Path = assemblyPath;

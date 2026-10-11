@@ -7,7 +7,7 @@ namespace Reloader;
 
 public static class Memory
 {
-    public static long WriteJump(long memory, long destination)
+    public static void WriteJump(long memory, long destination)
     {
         if (IntPtr.Size == 8)
         {
@@ -21,8 +21,6 @@ public static class Memory
             memory = writeInt(memory, (int)destination);
             memory = writeByte(memory, 195);
         }
-
-        return memory;
     }
 
     private static RuntimeMethodHandle getRuntimeMethodHandle(MethodBase method)

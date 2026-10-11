@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using LudeonTK;
+using Mlie;
 using UnityEngine;
 using Verse;
 
@@ -7,7 +8,8 @@ namespace DontTemptMe;
 
 public class DTMMod : Mod
 {
-    private readonly Vector2 vecDtmBanner = new Vector2(739f, 110f);
+    private static string currentVersion;
+    private readonly Vector2 vecDtmBanner = new(739f, 110f);
     private float floVertSpacer;
 
     private Vector2 vecDtmBannerSize = Vector2.zero;
@@ -16,6 +18,7 @@ public class DTMMod : Mod
         : base(content)
     {
         GetSettings<DTMSettings>();
+        currentVersion = VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
     }
 
     public override string SettingsCategory()
@@ -47,20 +50,25 @@ public class DTMMod : Mod
         var rect2 = new Rect(rect.x, position2.y + position2.height + floVertSpacer, inRect.width * 0.25f,
             inRect.height * 0.05f);
         GUI.DrawTexture(rect, DTMBin.DTMBanner);
-        if (GUI.Button(position, "Debug Log Menu") && !Find.WindowStack.TryRemove(typeof(Dialog_Debug)))
+        if (GUI.Button(position, "DTM.logmenu".Translate()) && !Find.WindowStack.TryRemove(typeof(Dialog_Debug)))
         {
             Find.WindowStack.Add(new Dialog_Debug());
         }
 
-        if (GUI.Button(position2, "Debug Log Window") && !Find.WindowStack.TryRemove(typeof(EditWindow_Log)))
+        if (GUI.Button(position2, "DTM.logwindow".Translate()) && !Find.WindowStack.TryRemove(typeof(EditWindow_Log)))
         {
             Find.WindowStack.Add(new EditWindow_Log());
         }
 
         var list = new List<ListableOption>();
-        ListableOption item = new ListableOption_WebLink("Information and Help".Translate(),
+        ListableOption item = new ListableOption_WebLink("DTM.information".Translate(),
             "https://www.reddit.com/r/KeenKrozzy/", DTMBin.RedditIcon);
         list.Add(item);
+        if (currentVersion != null)
+        {
+            list.Add(new ListableOption("DTM.modVersion".Translate(currentVersion), null));
+        }
+
         OptionListingUtility.DrawOptionListing(rect2, list);
     }
 }

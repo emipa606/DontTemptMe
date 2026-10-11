@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <DTM.information>Information and Help</DTM.information>
+  <DTM.logwindow>Debug Log Window</DTM.logwindow>
+  <DTM.logmenu>Debug Log Menu</DTM.logmenu>
+  <DTM.modVersion>Installed mod-version: {0}</DTM.modVersion>
+</LanguageData>

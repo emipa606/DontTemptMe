@@ -4,4 +4,10 @@
   </Configurations>
   <Project Path="0Reloader/0Reloader.csproj" />
   <Project Path="DontTemptMe/DontTemptMe.csproj" />
+  <Folder Name="/.github/">
+    <File Path="../.github/copilot-instructions.md" />
+  </Folder>
+  <Folder Name="/XML/About/">
+    <File Path="../About/about.xml" />
+  </Folder>
 </Solution>
