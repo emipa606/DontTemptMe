@@ -9,7 +9,7 @@ namespace DontTemptMe;
 [HarmonyPatch]
 public static class Listing_Standard_CheckboxLabeled
 {
-    private static IEnumerable<MethodBase> TargetMethods()
+    public static IEnumerable<MethodBase> TargetMethods()
     {
         return AccessTools.GetDeclaredMethods(typeof(Listing_Standard))
             .Where(methodInfo => methodInfo.Name == "CheckboxLabeled");

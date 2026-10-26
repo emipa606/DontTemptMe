@@ -2,6 +2,7 @@ using System;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace Reloader;
 
@@ -53,10 +54,9 @@ public static class Memory
         return runtimeMethodHandle.GetFunctionPointer().ToInt64();
     }
 
-    private static unsafe long writeByte(long memory, byte value)
+    private static long writeByte(long memory, byte value)
     {
-        var ptr = (byte*)memory;
-        *ptr = value;
+        Marshal.WriteByte(new IntPtr(memory), value);
         return memory + 1;
     }
 
@@ -70,17 +70,15 @@ public static class Memory
         return memory;
     }
 
-    private static unsafe long writeInt(long memory, int value)
+    private static long writeInt(long memory, int value)
     {
-        var ptr = (int*)memory;
-        *ptr = value;
+        Marshal.WriteInt32(new IntPtr(memory), value);
         return memory + 4;
     }
 
-    private static unsafe long writeLong(long memory, long value)
+    private static long writeLong(long memory, long value)
     {
-        var ptr = (long*)memory;
-        *ptr = value;
+        Marshal.WriteInt64(new IntPtr(memory), value);
         return memory + 8;
     }
 }

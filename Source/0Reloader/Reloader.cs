@@ -58,7 +58,7 @@ internal class Reloader : Mod
         AppDomain.CurrentDomain.GetAssemblies().Where(delegate(Assembly assembly)
             {
                 var fullName = assembly.FullName;
-                fullName = fullName.Split(',')[0];
+                fullName = fullName?.Split(',')[0];
                 var path = Path.Combine(assemblyPath, $"{fullName}.dll");
                 return File.Exists(path) && !excludedDLLs(path);
             }).ToList()
